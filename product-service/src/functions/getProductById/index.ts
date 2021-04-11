@@ -1,4 +1,3 @@
-import schema from './schema';
 import { handlerPath } from '@libs/handlerResolver';
 
 export default {
@@ -6,11 +5,14 @@ export default {
   events: [
     {
       http: {
-        method: 'post',
-        path: 'hello',
+        method: 'get',
+        path: 'products/{productId}',
+        cors: true,
         request: {
-          schema: {
-            'application/json': schema
+          parameters: {
+            paths: {
+              productId: true,
+            }
           }
         }
       }
