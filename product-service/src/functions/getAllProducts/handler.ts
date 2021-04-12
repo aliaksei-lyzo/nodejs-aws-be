@@ -9,7 +9,7 @@ import schema from './schema';
 
 import { productsListMock } from '../../libs/productsMock';
 
-const getAllProducts: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) => {
+export const getAllProducts: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) => {
   logger.info(`Receiving event: ${JSON.stringify(event)}`);
   // imitate DB request. Later this will be extracted to a separate service
   try {
