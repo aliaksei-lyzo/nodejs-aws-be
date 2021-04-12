@@ -9,6 +9,11 @@ export const successfulResponse = (response: Record<string, unknown>) => {
   logger.info(`Successful response: ${JSON.stringify(response)}`)
   return {
     statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Methods': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Allow-Origin': '*',
+    },
     body: JSON.stringify({
       success: true,
       response,
@@ -20,6 +25,11 @@ export const errorResponse = (statusCode: number, error: Error) => {
   logger.error(`Error response: ${JSON.stringify(error)}`);
   return {
     statusCode,
+    headers: {
+      'Access-Control-Allow-Methods': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Allow-Origin': '*',
+    },
     body: JSON.stringify({
       success: false,
       errorMessage: error.message,

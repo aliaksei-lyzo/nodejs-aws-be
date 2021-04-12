@@ -25,6 +25,9 @@ const serverlessConfiguration: AWS = {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
     },
     lambdaHashingVersion: '20201221',
+    httpApi: {
+      cors: true
+    }
   },
   // import the function via paths
   functions: { getAllProducts, getProductById },
