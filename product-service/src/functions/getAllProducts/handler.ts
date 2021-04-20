@@ -7,18 +7,14 @@ import logger from '@libs/logger';
 
 import schema from './schema';
 
-import { productsListMock } from '../../libs/productsMock';
+import { getDbClient } from '@libs/pgClient';
+import { queryAllProducts } from '../../services/product.service';
 
 export const getAllProducts: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) => {
   logger.info(`Receiving event: ${JSON.stringify(event)}`);
-  // imitate DB request. Later this will be extracted to a separate service
   try {
-    const productsList = await new Promise((res) => {
-      setTimeout(() => {
-        res(productsListMock);
-      }, 1000);
-    })
-    
+    const db = getDbClient();
+    const productsList = await queryAllProducts(db);
     return successfulResponse({
       products: productsList,
       event,

@@ -1,7 +1,11 @@
 import type { AWS } from '@serverless/typescript';
+import dotenv from 'dotenv';
 
 import getAllProducts from '@functions/getAllProducts';
 import getProductById from '@functions/getProductById';
+import postProduct from '@functions/postProduct';
+
+const envVars = dotenv.config({ path: '.env' }).parsed;
 
 const serverlessConfiguration: AWS = {
   service: 'product-service',
@@ -23,6 +27,7 @@ const serverlessConfiguration: AWS = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
+      ...envVars,
     },
     lambdaHashingVersion: '20201221',
     httpApi: {
@@ -30,7 +35,7 @@ const serverlessConfiguration: AWS = {
     }
   },
   // import the function via paths
-  functions: { getAllProducts, getProductById },
+  functions: { getAllProducts, getProductById, postProduct },
 };
 
 module.exports = serverlessConfiguration;
