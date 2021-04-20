@@ -12,6 +12,8 @@
   "dependencies": {
     "@middy/core": "^1.5.2",
     "@middy/http-json-body-parser": "^1.5.2",
+    "dotenv": "^8.2.0",
+    "pg": "^8.6.0",
     "source-map-support": "^0.5.19",
     "winston": "^3.3.3"
   },

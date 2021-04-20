@@ -22,7 +22,7 @@ export const successfulResponse = (response: Record<string, unknown>) => {
 };
 
 export const errorResponse = (statusCode: number, error: Error) => {
-  logger.error(`Error response: ${JSON.stringify(error)}`);
+  logger.info(`Error response: ${JSON.stringify(error)}`);
   return {
     statusCode,
     headers: {
