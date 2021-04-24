@@ -1,13 +1,13 @@
 {
   "pathParameters": {
-    "productId":"606bb70a-b927-4318-8200-5a06cafeb44f"
+    "productId":"8786fc62-6739-493d-88a1-a65623e0f275"
   },
   "body": {
     "product": {
-      "title": "Wu-tu-tu!",
+      "title": "Stu-tu-tu",
       "description": "Blow-off valve",
-      "price": 80.88
+      "price": 99.88
     },
-    "number": 35
+    "number": 23
   }
 }
