@@ -1,0 +1,28 @@
+service: import-service
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action: "s3:ListBucket"
+      Resource:
+        - "arn:aws:s3:::speedworks-products"
+    - Effect: "Allow"
+      Action:
+        - "s3:*"
+      Resource:
+        - "arn:aws:s3:::speedworks-products/*"
+
+functions:
+  importProductsFile:
+    handler: handler.importProductsFile
+    events: 
+      - http:
+          path: /import
+          method: GET
+          request:
+            parameters:
+              querystrings:
+                name: true
