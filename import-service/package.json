@@ -9,7 +9,8 @@
   "author": "Aliaksei Lyzo",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.892.0"
+    "aws-sdk": "^2.892.0",
+    "csv-parser": "^3.0.0"
   },
   "devDependencies": {
     "aws-sdk-mock": "^5.1.0",

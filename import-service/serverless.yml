@@ -3,6 +3,7 @@ service: import-service
 provider:
   name: aws
   runtime: nodejs14.x
+  region: eu-west-1
 
   iamRoleStatements:
     - Effect: "Allow"
@@ -26,3 +27,12 @@ functions:
             parameters:
               querystrings:
                 name: true
+  importFileParser:
+    handler: handler.importFileParser
+    events:
+      - s3:
+          bucket: speedworks-products
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: uploaded/
+          existing: true
