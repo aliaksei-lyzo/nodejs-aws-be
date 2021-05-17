@@ -1,0 +1,19 @@
+{
+  "name": "import-service",
+  "version": "1.0.0",
+  "description": "import service",
+  "main": "serverless.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Aliaksei Lyzo",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.892.0",
+    "csv-parser": "^3.0.0"
+  },
+  "devDependencies": {
+    "aws-sdk-mock": "^5.1.0",
+    "jest": "^26.6.3"
+  }
+}
