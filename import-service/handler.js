@@ -1,3 +1,6 @@
+const AWS = require('aws-sdk');
+const csv = require('csv-parser');
+
 module.exports = {
   importProductsFile: async function(event) {
     console.log('EVENT', event);
@@ -42,8 +45,6 @@ module.exports = {
   importFileParser: async function(event) {
     console.log('EVENT', JSON.stringify(event));
     try {
-      const AWS = require('aws-sdk');
-      const csv = require('csv-parser');
       const BUCKET = 'speedworks-products';
 
       const s3 = new AWS.S3({ region: 'eu-west-1' });
@@ -54,11 +55,12 @@ module.exports = {
       const csvStream = s3.getObject({ Bucket: BUCKET, Key: record.s3.object.key })
       .createReadStream();
       console.log('csvStream', JSON.stringify(csvStream));
-      await new Promise((res) => {
+      await new Promise((res, rej) => {
         csvStream
         .on('error', (err) => {
           console.log('Error in stream');
           console.log(JSON.stringify(err));
+          rej('Error while parsing CSV');
          })
         .pipe(csv())
         .on('data', product => {
